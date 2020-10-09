@@ -229,7 +229,7 @@ export class AppModule {}
 
 ```
 
-grpc客户端调用方式
+grpc客户端调用方式（配套grpc客户端地址 [nest-grpc-crud-client](https://github.com/zhangtao25/nest-grpc-crud-client) ）
 ```ts
 @Controller('')
 export class AppController implements OnModuleInit {
