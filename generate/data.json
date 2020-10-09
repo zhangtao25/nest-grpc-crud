@@ -1,70 +1,6 @@
 {
     "columns": [
         {
-            "name": "user",
-            "Name": "User",
-            "column": [
-                {
-                    "name": "id",
-                    "type": "int32"
-                },
-                {
-                    "name": "unionid",
-                    "type": "string"
-                },
-                {
-                    "name": "phone",
-                    "type": "string"
-                },
-                {
-                    "name": "email",
-                    "type": "string"
-                }
-            ]
-        },
-        {
-            "name": "activity",
-            "Name": "Activity",
-            "column": [
-                {
-                    "name": "id",
-                    "type": "int32"
-                },
-                {
-                    "name": "name",
-                    "type": "string"
-                },
-                {
-                    "name": "cost",
-                    "type": "int32"
-                },
-                {
-                    "name": "numberLimit",
-                    "type": "int32"
-                },
-                {
-                    "name": "creater",
-                    "type": "int32"
-                },
-                {
-                    "name": "posters",
-                    "type": "int32"
-                },
-                {
-                    "name": "startTime",
-                    "type": "string"
-                },
-                {
-                    "name": "endTime",
-                    "type": "string"
-                },
-                {
-                    "name": "content",
-                    "type": "string"
-                }
-            ]
-        },
-        {
             "name": "student",
             "Name": "Student",
             "column": [
@@ -74,34 +10,6 @@
                 },
                 {
                     "name": "name",
-                    "type": "string"
-                }
-            ]
-        },
-        {
-            "name": "book",
-            "Name": "Book",
-            "column": [
-                {
-                    "name": "id",
-                    "type": "int32"
-                },
-                {
-                    "name": "category",
-                    "type": "string"
-                }
-            ]
-        },
-        {
-            "name": "school",
-            "Name": "School",
-            "column": [
-                {
-                    "name": "id",
-                    "type": "int32"
-                },
-                {
-                    "name": "address",
                     "type": "string"
                 }
             ]
