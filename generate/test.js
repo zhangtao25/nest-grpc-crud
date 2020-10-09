@@ -1,33 +1,26 @@
 const fs = require('fs')
 const ejs = require('ejs')
+const data = require('./data.json')
+const g = require('./g')
+
 
 // 准备数据
-let data = {
-    users:[
-        {
-            name:1,
-            show:true
-        }
-    ],
-    // column:{
-    //     name:"activity",
-    //     Name:"Activity"
-    // },
-    columns:[
-        {
-            name:"user",
-            Name:"User"
-        },
-        {
-            name:"activity",
-            Name:"Activity"
-        },
-        {
-            name:"student",
-            Name:"Student"
-        }
-    ]
+// let data = {
+//
+// }
+
+
+let dbs = []
+
+for (let i = 0; i < data.columns.length; i++) {
+    dbs.push({
+            table:data.columns[i].Name,
+            column: data.columns[i].column
+    })
 }
+
+g(dbs)
+
 
 let options = {}
 

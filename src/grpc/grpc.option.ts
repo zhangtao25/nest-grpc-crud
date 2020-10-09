@@ -5,12 +5,14 @@ import Util from './../untils/util'
 
 const IPAdress = Util.getIPAdress()
 
+// console.log(__dirname,'__dirname',join(__dirname, './contract/grpc.proto'))
+
 
 export const grpcServerOptions: ClientOptions = {
   transport: Transport.GRPC,
   options: {
     url: IPAdress + ':8888',
     package: 'grpcService',
-    protoPath: join(__dirname, '../../contract/grpc.proto')
+    protoPath: './contract/grpc.proto'
   },
 };

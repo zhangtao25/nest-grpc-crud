@@ -1,5 +1,6 @@
+
 syntax = "proto3";
-package grpcService;
+package grpcService; // 包名
 
 
 message CommonField {
@@ -16,34 +17,34 @@ service ActivityService {
 
 //Activity
 message Activity {
-
-    int32 id = 1;
-    string name = 2;
-    int32 cost = 3;
-    int32 numberLimit = 4;
-    int32 creater = 5;
-    int32 posters = 6;
-    string startTime = 7;
-    string endTime = 8;
-    string content = 9;
+    
+        int32 id = 1;
+        string name = 2;
+        int32 cost = 3;
+        int32 numberLimit = 4;
+        int32 creater = 5;
+        int32 posters = 6;
+        string startTime = 7;
+        string endTime = 8;
+        string content = 9;
 }
 
 message CreateActivityRequestType{
-
-    int32 id = 1;
-    string name = 2;
-    int32 cost = 3;
-    int32 numberLimit = 4;
-    int32 creater = 5;
-    int32 posters = 6;
-    string startTime = 7;
-    string endTime = 8;
-    string content = 9;
+    
+        int32 id = 1;
+        string name = 2;
+        int32 cost = 3;
+        int32 numberLimit = 4;
+        int32 creater = 5;
+        int32 posters = 6;
+        string startTime = 7;
+        string endTime = 8;
+        string content = 9;
 }
 
 message CreateActivityResponseType{
     int32 responseCode = 2;
-    string responseDesc = 3;
+    string responseDesc =  3;
 }
 
 message DeleteActivityRequestType{
@@ -52,25 +53,25 @@ message DeleteActivityRequestType{
 
 message DeleteActivityResponseType{
     int32 responseCode = 2;
-    string responseDesc = 3;
+    string responseDesc =  3;
 }
 
 message UpdateActivityRequestType{
-
-    int32 id = 1;
-    string name = 2;
-    int32 cost = 3;
-    int32 numberLimit = 4;
-    int32 creater = 5;
-    int32 posters = 6;
-    string startTime = 7;
-    string endTime = 8;
-    string content = 9;
+    
+        int32 id = 1;
+        string name = 2;
+        int32 cost = 3;
+        int32 numberLimit = 4;
+        int32 creater = 5;
+        int32 posters = 6;
+        string startTime = 7;
+        string endTime = 8;
+        string content = 9;
 }
 
 message UpdateActivityResponseType{
     int32 responseCode = 2;
-    string responseDesc = 3;
+    string responseDesc =  3;
 }
 
 message FindActivityRequestType{
@@ -81,9 +82,9 @@ message FindActivityRequestType{
 message FindActivityResponseType{
     repeated Activity data = 1;
     int32 responseCode = 2;
-    string responseDesc = 3;
+    string responseDesc =  3;
 }
-
+    
 service UserService {
     rpc CreateUser (CreateUserRequestType) returns (CreateUserResponseType) {}
     rpc DeleteUser (DeleteUserRequestType) returns (DeleteUserResponseType) {}
@@ -93,24 +94,24 @@ service UserService {
 
 //User
 message User {
-
-    int32 id = 1;
-    string unionid = 2;
-    string phone = 3;
-    string email = 4;
+    
+        int32 id = 1;
+        string unionid = 2;
+        string phone = 3;
+        string email = 4;
 }
 
 message CreateUserRequestType{
-
-    int32 id = 1;
-    string unionid = 2;
-    string phone = 3;
-    string email = 4;
+    
+        int32 id = 1;
+        string unionid = 2;
+        string phone = 3;
+        string email = 4;
 }
 
 message CreateUserResponseType{
     int32 responseCode = 2;
-    string responseDesc = 3;
+    string responseDesc =  3;
 }
 
 message DeleteUserRequestType{
@@ -119,20 +120,20 @@ message DeleteUserRequestType{
 
 message DeleteUserResponseType{
     int32 responseCode = 2;
-    string responseDesc = 3;
+    string responseDesc =  3;
 }
 
 message UpdateUserRequestType{
-
-    int32 id = 1;
-    string unionid = 2;
-    string phone = 3;
-    string email = 4;
+    
+        int32 id = 1;
+        string unionid = 2;
+        string phone = 3;
+        string email = 4;
 }
 
 message UpdateUserResponseType{
     int32 responseCode = 2;
-    string responseDesc = 3;
+    string responseDesc =  3;
 }
 
 message FindUserRequestType{
@@ -143,5 +144,62 @@ message FindUserRequestType{
 message FindUserResponseType{
     repeated User data = 1;
     int32 responseCode = 2;
-    string responseDesc = 3;
+    string responseDesc =  3;
 }
+    
+service StudentService {
+    rpc CreateStudent (CreateStudentRequestType) returns (CreateStudentResponseType) {}
+    rpc DeleteStudent (DeleteStudentRequestType) returns (DeleteStudentResponseType) {}
+    rpc UpdateStudent (UpdateStudentRequestType) returns (UpdateStudentResponseType) {}
+    rpc FindStudent (FindStudentRequestType) returns (FindStudentResponseType) {}
+}
+
+//Student
+message Student {
+    
+        int32 id = 1;
+        string name = 2;
+}
+
+message CreateStudentRequestType{
+    
+        int32 id = 1;
+        string name = 2;
+}
+
+message CreateStudentResponseType{
+    int32 responseCode = 2;
+    string responseDesc =  3;
+}
+
+message DeleteStudentRequestType{
+    string id = 1;
+}
+
+message DeleteStudentResponseType{
+    int32 responseCode = 2;
+    string responseDesc =  3;
+}
+
+message UpdateStudentRequestType{
+    
+        int32 id = 1;
+        string name = 2;
+}
+
+message UpdateStudentResponseType{
+    int32 responseCode = 2;
+    string responseDesc =  3;
+}
+
+message FindStudentRequestType{
+    Student entity = 1;
+    CommonField commonField = 2;
+}
+
+message FindStudentResponseType{
+    repeated Student data = 1;
+    int32 responseCode = 2;
+    string responseDesc =  3;
+}
+    

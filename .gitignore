@@ -1,5 +1,6 @@
 /generate/apps/
 /generate/app.controller.ts
+/generate/grpc.proto
 
 # compiled output
 /dist

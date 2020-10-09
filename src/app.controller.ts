@@ -8,15 +8,31 @@ import { ActivityCrudService } from './apps/activity/activity.crud.service';
 
 import { StudentCrudService } from './apps/student/student.crud.service';
 
+import { BookCrudService } from './apps/book/book.crud.service';
+
+import { SchoolCrudService } from './apps/school/school.crud.service';
+
+
+
+
 
 @Controller()
 export class AppController {
     constructor(
+
         private readonly userCrudService: UserCrudService,
+
         private readonly activityCrudService: ActivityCrudService,
+
         private readonly studentCrudService: StudentCrudService,
+
+        private readonly bookCrudService: BookCrudService,
+
+        private readonly schoolCrudService: SchoolCrudService,
+
     ) {
     }
+
 
 
     // user
@@ -34,8 +50,8 @@ export class AppController {
     @GrpcMethod(UserCrudService.service, 'Update' + UserCrudService.method)
     async updateUser(req): Promise<any> {
         const id = req.id;
-        delete req.id;
-        return await this.userCrudService.update(id, req);
+        delete req.id
+        return await this.userCrudService.update(id,req);
     }
 
     @GrpcMethod(UserCrudService.service, 'Find' + UserCrudService.method)
@@ -44,6 +60,7 @@ export class AppController {
         const entity = req.entity;
         return await this.userCrudService.find(entity, commonField);
     }
+
 
 
     // activity
@@ -61,8 +78,8 @@ export class AppController {
     @GrpcMethod(ActivityCrudService.service, 'Update' + ActivityCrudService.method)
     async updateActivity(req): Promise<any> {
         const id = req.id;
-        delete req.id;
-        return await this.activityCrudService.update(id, req);
+        delete req.id
+        return await this.activityCrudService.update(id,req);
     }
 
     @GrpcMethod(ActivityCrudService.service, 'Find' + ActivityCrudService.method)
@@ -71,6 +88,7 @@ export class AppController {
         const entity = req.entity;
         return await this.activityCrudService.find(entity, commonField);
     }
+
 
 
     // student
@@ -88,8 +106,8 @@ export class AppController {
     @GrpcMethod(StudentCrudService.service, 'Update' + StudentCrudService.method)
     async updateStudent(req): Promise<any> {
         const id = req.id;
-        delete req.id;
-        return await this.studentCrudService.update(id, req);
+        delete req.id
+        return await this.studentCrudService.update(id,req);
     }
 
     @GrpcMethod(StudentCrudService.service, 'Find' + StudentCrudService.method)
@@ -98,6 +116,63 @@ export class AppController {
         const entity = req.entity;
         return await this.studentCrudService.find(entity, commonField);
     }
+
+
+
+    // book
+    @GrpcMethod(BookCrudService.service, 'Create' + BookCrudService.method)
+    async createBook(req): Promise<any> {
+        return await this.bookCrudService.create(req);
+    }
+
+    @GrpcMethod(BookCrudService.service, 'Delete' + BookCrudService.method)
+    async deleteBook(req): Promise<any> {
+        const id = req.id;
+        return await this.bookCrudService.delete(id);
+    }
+
+    @GrpcMethod(BookCrudService.service, 'Update' + BookCrudService.method)
+    async updateBook(req): Promise<any> {
+        const id = req.id;
+        delete req.id
+        return await this.bookCrudService.update(id,req);
+    }
+
+    @GrpcMethod(BookCrudService.service, 'Find' + BookCrudService.method)
+    async findBook(req): Promise<any> {
+        const commonField = req.commonField;
+        const entity = req.entity;
+        return await this.bookCrudService.find(entity, commonField);
+    }
+
+
+
+    // school
+    @GrpcMethod(SchoolCrudService.service, 'Create' + SchoolCrudService.method)
+    async createSchool(req): Promise<any> {
+        return await this.schoolCrudService.create(req);
+    }
+
+    @GrpcMethod(SchoolCrudService.service, 'Delete' + SchoolCrudService.method)
+    async deleteSchool(req): Promise<any> {
+        const id = req.id;
+        return await this.schoolCrudService.delete(id);
+    }
+
+    @GrpcMethod(SchoolCrudService.service, 'Update' + SchoolCrudService.method)
+    async updateSchool(req): Promise<any> {
+        const id = req.id;
+        delete req.id
+        return await this.schoolCrudService.update(id,req);
+    }
+
+    @GrpcMethod(SchoolCrudService.service, 'Find' + SchoolCrudService.method)
+    async findSchool(req): Promise<any> {
+        const commonField = req.commonField;
+        const entity = req.entity;
+        return await this.schoolCrudService.find(entity, commonField);
+    }
+
 
 
 }

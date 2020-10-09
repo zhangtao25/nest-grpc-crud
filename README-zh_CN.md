@@ -1,11 +1,13 @@
 # nest-grpc-crud
 
-Grpc solution based on nest
-## Table of Contents
+基于nest的grpc crud解决方案
 
-  - [Features](#features)
-  - [Browser Support](#browser-support)
-  - [Installing](#installing)
+[English](./README.md) | 简体中文
+
+## 目录
+
+  - [Features](#功能)
+  - [Use](#使用)
   
 
 ## Features
@@ -18,6 +20,9 @@ Grpc solution based on nest
 - Cancel requests
 - Automatic transforms for JSON data
 - Client side support for protecting against [XSRF](http://en.wikipedia.org/wiki/Cross-site_request_forgery)
+
+## Use
+- Transform request and response data
 
 ## Feedback
 
