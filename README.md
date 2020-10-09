@@ -7,3 +7,7 @@ Grpc solution based on nest
 -   [x] Generate contracts based on the database
 
 ## License
+
+## Feedback
+
+QQ group: 1042755904
