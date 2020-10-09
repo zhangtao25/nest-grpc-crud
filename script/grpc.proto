@@ -1,0 +1,147 @@
+syntax = "proto3";
+package grpcService;
+
+
+message CommonField {
+    string pageIndex = 1;
+    string pageSize = 2;
+}
+
+service ActivityService {
+    rpc CreateActivity (CreateActivityRequestType) returns (CreateActivityResponseType) {}
+    rpc DeleteActivity (DeleteActivityRequestType) returns (DeleteActivityResponseType) {}
+    rpc UpdateActivity (UpdateActivityRequestType) returns (UpdateActivityResponseType) {}
+    rpc FindActivity (FindActivityRequestType) returns (FindActivityResponseType) {}
+}
+
+//Activity
+message Activity {
+
+    int32 id = 1;
+    string name = 2;
+    int32 cost = 3;
+    int32 numberLimit = 4;
+    int32 creater = 5;
+    int32 posters = 6;
+    string startTime = 7;
+    string endTime = 8;
+    string content = 9;
+}
+
+message CreateActivityRequestType{
+
+    int32 id = 1;
+    string name = 2;
+    int32 cost = 3;
+    int32 numberLimit = 4;
+    int32 creater = 5;
+    int32 posters = 6;
+    string startTime = 7;
+    string endTime = 8;
+    string content = 9;
+}
+
+message CreateActivityResponseType{
+    int32 responseCode = 2;
+    string responseDesc = 3;
+}
+
+message DeleteActivityRequestType{
+    string id = 1;
+}
+
+message DeleteActivityResponseType{
+    int32 responseCode = 2;
+    string responseDesc = 3;
+}
+
+message UpdateActivityRequestType{
+
+    int32 id = 1;
+    string name = 2;
+    int32 cost = 3;
+    int32 numberLimit = 4;
+    int32 creater = 5;
+    int32 posters = 6;
+    string startTime = 7;
+    string endTime = 8;
+    string content = 9;
+}
+
+message UpdateActivityResponseType{
+    int32 responseCode = 2;
+    string responseDesc = 3;
+}
+
+message FindActivityRequestType{
+    Activity entity = 1;
+    CommonField commonField = 2;
+}
+
+message FindActivityResponseType{
+    repeated Activity data = 1;
+    int32 responseCode = 2;
+    string responseDesc = 3;
+}
+
+service UserService {
+    rpc CreateUser (CreateUserRequestType) returns (CreateUserResponseType) {}
+    rpc DeleteUser (DeleteUserRequestType) returns (DeleteUserResponseType) {}
+    rpc UpdateUser (UpdateUserRequestType) returns (UpdateUserResponseType) {}
+    rpc FindUser (FindUserRequestType) returns (FindUserResponseType) {}
+}
+
+//User
+message User {
+
+    int32 id = 1;
+    string unionid = 2;
+    string phone = 3;
+    string email = 4;
+}
+
+message CreateUserRequestType{
+
+    int32 id = 1;
+    string unionid = 2;
+    string phone = 3;
+    string email = 4;
+}
+
+message CreateUserResponseType{
+    int32 responseCode = 2;
+    string responseDesc = 3;
+}
+
+message DeleteUserRequestType{
+    string id = 1;
+}
+
+message DeleteUserResponseType{
+    int32 responseCode = 2;
+    string responseDesc = 3;
+}
+
+message UpdateUserRequestType{
+
+    int32 id = 1;
+    string unionid = 2;
+    string phone = 3;
+    string email = 4;
+}
+
+message UpdateUserResponseType{
+    int32 responseCode = 2;
+    string responseDesc = 3;
+}
+
+message FindUserRequestType{
+    User entity = 1;
+    CommonField commonField = 2;
+}
+
+message FindUserResponseType{
+    repeated User data = 1;
+    int32 responseCode = 2;
+    string responseDesc = 3;
+}
