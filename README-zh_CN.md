@@ -6,8 +6,8 @@
 
 ## 目录
 
-  - [Features](#功能)
-  - [Use](#使用)
+  - [Features](#Features)
+  - [Use](#Use)
   
 
 ## Features
