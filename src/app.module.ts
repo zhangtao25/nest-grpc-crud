@@ -5,6 +5,8 @@ import { Activity } from './apps/activity/activity.entity';
 import { ActivityCrudService } from './apps/activity/activity.crud.service';
 import { User } from './apps/user/user.entity';
 import { UserCrudService } from './apps/user/user.crud.service';
+import { Student } from './apps/student/student.entity';
+import { StudentCrudService } from './apps/student/student.crud.service';
 
 @Module({
   imports: [
@@ -16,14 +18,14 @@ import { UserCrudService } from './apps/user/user.crud.service';
           username: 'root',
           password: 'wjyy26303',
           database: 'nest-grpc-crud-test',
-          entities:[Activity,User],
+          entities:[Activity,User,Student],
           autoLoadEntities: true,
           synchronize: true,
           // entities: [User,Userinfo,File]
       }),
-      TypeOrmModule.forFeature([Activity,User], 'regConnection')
+      TypeOrmModule.forFeature([Activity,User,Student], 'regConnection')
   ],
   controllers: [AppController],
-  providers: [ActivityCrudService,UserCrudService],
+  providers: [ActivityCrudService,UserCrudService,StudentCrudService],
 })
 export class AppModule {}

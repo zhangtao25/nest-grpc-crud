@@ -1,6 +1,6 @@
 
 syntax = "proto3";
-package grpcService;
+package grpcService; // 包名
 
 
 message CommonField {
@@ -143,6 +143,62 @@ message FindUserRequestType{
 
 message FindUserResponseType{
     repeated User data = 1;
+    int32 responseCode = 2;
+    string responseDesc =  3;
+}
+
+service StudentService {
+    rpc CreateStudent (CreateStudentRequestType) returns (CreateStudentResponseType) {}
+    rpc DeleteStudent (DeleteStudentRequestType) returns (DeleteStudentResponseType) {}
+    rpc UpdateStudent (UpdateStudentRequestType) returns (UpdateStudentResponseType) {}
+    rpc FindStudent (FindStudentRequestType) returns (FindStudentResponseType) {}
+}
+
+//Student
+message Student {
+
+    int32 id = 1;
+    string name = 2;
+}
+
+message CreateStudentRequestType{
+
+    int32 id = 1;
+    string name = 2;
+}
+
+message CreateStudentResponseType{
+    int32 responseCode = 2;
+    string responseDesc =  3;
+}
+
+message DeleteStudentRequestType{
+    string id = 1;
+}
+
+message DeleteStudentResponseType{
+    int32 responseCode = 2;
+    string responseDesc =  3;
+}
+
+message UpdateStudentRequestType{
+
+    int32 id = 1;
+    string name = 2;
+}
+
+message UpdateStudentResponseType{
+    int32 responseCode = 2;
+    string responseDesc =  3;
+}
+
+message FindStudentRequestType{
+    Student entity = 1;
+    CommonField commonField = 2;
+}
+
+message FindStudentResponseType{
+    repeated Student data = 1;
     int32 responseCode = 2;
     string responseDesc =  3;
 }

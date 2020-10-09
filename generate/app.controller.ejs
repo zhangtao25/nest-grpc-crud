@@ -1,0 +1,50 @@
+import { Controller } from '@nestjs/common';
+import { GrpcMethod } from '@nestjs/microservices';
+
+<% columns.forEach(function(column){ %>
+    import { <%- column.Name %>CrudService } from './apps/<%- column.name %>/<%- column.name %>.crud.service';
+<% }); %>
+
+
+
+
+@Controller()
+export class AppController {
+    constructor(
+    <% columns.forEach(function(column){ %>
+        private readonly <%- column.name %>CrudService: <%- column.Name %>CrudService,
+    <% }); %>
+    ) {
+    }
+
+<% columns.forEach(function(column){ %>
+
+    // <%- column.name %>
+    @GrpcMethod(<%- column.Name %>CrudService.service, 'Create' + <%- column.Name %>CrudService.method)
+    async create<%- column.Name %>(req): Promise<any> {
+    return await this.<%- column.name %>CrudService.create(req);
+    }
+
+    @GrpcMethod(<%- column.Name %>CrudService.service, 'Delete' + <%- column.Name %>CrudService.method)
+    async delete<%- column.Name %>(req): Promise<any> {
+    const id = req.id;
+    return await this.<%- column.name %>CrudService.delete(id);
+    }
+
+    @GrpcMethod(<%- column.Name %>CrudService.service, 'Update' + <%- column.Name %>CrudService.method)
+    async update<%- column.Name %>(req): Promise<any> {
+    const id = req.id;
+    delete req.id
+    return await this.<%- column.name %>CrudService.update(id,req);
+    }
+
+    @GrpcMethod(<%- column.Name %>CrudService.service, 'Find' + <%- column.Name %>CrudService.method)
+    async find<%- column.Name %>(req): Promise<any> {
+    const commonField = req.commonField;
+    const entity = req.entity;
+    return await this.<%- column.name %>CrudService.find(entity, commonField);
+    }
+
+<% }); %>
+
+}

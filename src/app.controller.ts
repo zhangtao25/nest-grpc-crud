@@ -1,18 +1,52 @@
 import { Controller } from '@nestjs/common';
 import { GrpcMethod } from '@nestjs/microservices';
-import { ActivityCrudService } from './apps/activity/activity.crud.service';
+
+
 import { UserCrudService } from './apps/user/user.crud.service';
+
+import { ActivityCrudService } from './apps/activity/activity.crud.service';
+
+import { StudentCrudService } from './apps/student/student.crud.service';
 
 
 @Controller()
 export class AppController {
     constructor(
-        private readonly activityCrudService: ActivityCrudService,
         private readonly userCrudService: UserCrudService,
+        private readonly activityCrudService: ActivityCrudService,
+        private readonly studentCrudService: StudentCrudService,
     ) {
     }
 
-    // Activity
+
+    // user
+    @GrpcMethod(UserCrudService.service, 'Create' + UserCrudService.method)
+    async createUser(req): Promise<any> {
+        return await this.userCrudService.create(req);
+    }
+
+    @GrpcMethod(UserCrudService.service, 'Delete' + UserCrudService.method)
+    async deleteUser(req): Promise<any> {
+        const id = req.id;
+        return await this.userCrudService.delete(id);
+    }
+
+    @GrpcMethod(UserCrudService.service, 'Update' + UserCrudService.method)
+    async updateUser(req): Promise<any> {
+        const id = req.id;
+        delete req.id;
+        return await this.userCrudService.update(id, req);
+    }
+
+    @GrpcMethod(UserCrudService.service, 'Find' + UserCrudService.method)
+    async findUser(req): Promise<any> {
+        const commonField = req.commonField;
+        const entity = req.entity;
+        return await this.userCrudService.find(entity, commonField);
+    }
+
+
+    // activity
     @GrpcMethod(ActivityCrudService.service, 'Create' + ActivityCrudService.method)
     async createActivity(req): Promise<any> {
         return await this.activityCrudService.create(req);
@@ -27,8 +61,8 @@ export class AppController {
     @GrpcMethod(ActivityCrudService.service, 'Update' + ActivityCrudService.method)
     async updateActivity(req): Promise<any> {
         const id = req.id;
-        delete req.id
-        return await this.activityCrudService.update(id,req);
+        delete req.id;
+        return await this.activityCrudService.update(id, req);
     }
 
     @GrpcMethod(ActivityCrudService.service, 'Find' + ActivityCrudService.method)
@@ -39,37 +73,31 @@ export class AppController {
     }
 
 
-
-    // User
-    @GrpcMethod(UserCrudService.service, 'Create' + UserCrudService.method)
-    async createUser(req, metdata: any): Promise<any> {
-        const entity = req;
-        const res = await this.userCrudService.create(entity);
-        return res;
+    // student
+    @GrpcMethod(StudentCrudService.service, 'Create' + StudentCrudService.method)
+    async createStudent(req): Promise<any> {
+        return await this.studentCrudService.create(req);
     }
 
-    @GrpcMethod(UserCrudService.service, 'Delete' + UserCrudService.method)
-    async deleteUser(req, metdata: any): Promise<any> {
+    @GrpcMethod(StudentCrudService.service, 'Delete' + StudentCrudService.method)
+    async deleteStudent(req): Promise<any> {
         const id = req.id;
-        console.log(req)
-        const res = await this.userCrudService.delete(id);
-        return res;
+        return await this.studentCrudService.delete(id);
     }
 
-    @GrpcMethod(UserCrudService.service, 'Update' + UserCrudService.method)
-    async updateUser(req, metdata: any): Promise<any> {
+    @GrpcMethod(StudentCrudService.service, 'Update' + StudentCrudService.method)
+    async updateStudent(req): Promise<any> {
         const id = req.id;
-        delete req.id
-        const res = await this.userCrudService.update(id,req);
-        return res;
+        delete req.id;
+        return await this.studentCrudService.update(id, req);
     }
 
-    @GrpcMethod(UserCrudService.service, 'Find' + UserCrudService.method)
-    async findUser(req, metdata: any): Promise<any> {
-        console.log(req,'req')
+    @GrpcMethod(StudentCrudService.service, 'Find' + StudentCrudService.method)
+    async findStudent(req): Promise<any> {
         const commonField = req.commonField;
         const entity = req.entity;
-        const res = await this.userCrudService.find(entity, commonField);
-        return res;
+        return await this.studentCrudService.find(entity, commonField);
     }
+
+
 }

@@ -1,0 +1,22 @@
+import { InjectRepository } from '@nestjs/typeorm';
+import { Injectable } from '@nestjs/common';
+import { <%- column.Name %> } from './<%- column.name %>.entity';
+import { CrudService } from '../../common/crud.service';
+
+@Injectable()
+export class <%- column.Name %>CrudService extends CrudService<<%- column.Name %>>{
+    constructor(
+        @InjectRepository(<%- column.Name %>, 'regConnection') repo
+    ) {
+        super(repo)
+    }
+
+    public static method = '<%- column.Name %>';
+    public static service = '<%- column.Name %>Service';
+
+    public static request = {};
+    public static response = {};
+
+
+}
+
