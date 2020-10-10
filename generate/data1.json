@@ -157,10 +157,29 @@
                 },
                 {
                     "name": "activityId",
-                    "type": "string"
+                    "type": "int32"
                 },
                 {
                     "name": "customs",
+                    "type": "string"
+                }
+            ]
+        },
+        {
+            "name": "activityInfoDetail",
+            "Name": "ActivityInfoDetail",
+            "type": "mongodb",
+            "column": [
+                {
+                    "name": "id",
+                    "type": "int32"
+                },
+                {
+                    "name": "activityrelationId",
+                    "type": "int32"
+                },
+                {
+                    "name": "details",
                     "type": "string"
                 }
             ]
