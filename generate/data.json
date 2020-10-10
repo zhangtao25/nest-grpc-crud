@@ -1,15 +1,42 @@
 {
     "columns": [
         {
-            "name": "student",
-            "Name": "Student",
+            "name": "user",
+            "Name": "User",
             "column": [
                 {
                     "name": "id",
                     "type": "int32"
                 },
                 {
-                    "name": "name",
+                    "name": "wechatID",
+                    "type": "string"
+                },
+                {
+                    "name": "phone",
+                    "type": "string"
+                },
+                {
+                    "name": "email",
+                    "type": "string"
+                }
+            ]
+        },
+        {
+            "name": "activityFieldCustom",
+            "Name": "ActivityFieldCustom",
+            "type": "mongodb",
+            "column": [
+                {
+                    "name": "id",
+                    "type": "int32"
+                },
+                {
+                    "name": "activityId",
+                    "type": "string"
+                },
+                {
+                    "name": "customs",
                     "type": "string"
                 }
             ]

@@ -72,33 +72,67 @@ ejs.renderFile('./generate/app.controller.ejs', data, options, function(err, str
 
 for (let i = 0; i < data.columns.length; i++) {
 
-    console.log(data.columns[i],'data.columns[i]')
-    ejs.renderFile('./generate/template.crud.service.ejs', {column:data.columns[i]} , options, function(err, str){
-        console.log(err,str)
-        fs.writeFile(`./generate/apps/${data.columns[i].name}/${data.columns[i].name}.crud.service.ts`, str, 'utf8', (err) => {
-            if (err) {
-                console.log('template.crud.service.ts' + err)
-            } else {
-                console.log('ok');
-            }
-        });
+    if (data.columns[i].type === 'mongodb'){
+        ejs.renderFile('./generate/mongo.template.crud.service.ejs', {column:data.columns[i]} , options, function(err, str){
+            console.log(err,str)
+            fs.writeFile(`./generate/apps/${data.columns[i].name}/${data.columns[i].name}.crud.service.ts`, str, 'utf8', (err) => {
+                if (err) {
+                    console.log('template.crud.service.ts' + err)
+                } else {
+                    console.log('ok');
+                }
+            });
 
 
-    })
+        })
 
 
 
-    ejs.renderFile('./generate/template.entity.ejs', {column:data.columns[i]} , options, function(err, str){
-        fs.writeFile(`./generate/apps/${data.columns[i].name}/${data.columns[i].name}.entity.ts`, str, 'utf8', (err) => {
-            if (err) {
-                console.log('template.entity.ts' + err)
-            } else {
-                console.log('ok');
-            }
-        });
+
+        ejs.renderFile('./generate/mongo.template.schema.ejs', {column:data.columns[i]} , options, function(err, str){
+            fs.writeFile(`./generate/apps/${data.columns[i].name}/${data.columns[i].name}.schema.ts`, str, 'utf8', (err) => {
+                if (err) {
+                    console.log('template.entity.ts' + err)
+                } else {
+                    console.log('ok');
+                }
+            });
 
 
-    })
+        })
+    } else {
+        ejs.renderFile('./generate/template.crud.service.ejs', {column:data.columns[i]} , options, function(err, str){
+            console.log(err,str)
+            fs.writeFile(`./generate/apps/${data.columns[i].name}/${data.columns[i].name}.crud.service.ts`, str, 'utf8', (err) => {
+                if (err) {
+                    console.log('template.crud.service.ts' + err)
+                } else {
+                    console.log('ok');
+                }
+            });
+
+
+        })
+
+
+
+        ejs.renderFile('./generate/template.entity.ejs', {column:data.columns[i]} , options, function(err, str){
+            fs.writeFile(`./generate/apps/${data.columns[i].name}/${data.columns[i].name}.entity.ts`, str, 'utf8', (err) => {
+                if (err) {
+                    console.log('template.entity.ts' + err)
+                } else {
+                    console.log('ok');
+                }
+            });
+
+
+        })
+    }
+
+
+
+
+
 
 
 

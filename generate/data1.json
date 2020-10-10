@@ -1,0 +1,169 @@
+{
+    "columns": [
+        {
+            "name": "activity",
+            "Name": "Activity",
+            "column": [
+                {
+                    "name": "id",
+                    "type": "int32"
+                },
+                {
+                    "name": "name",
+                    "type": "string"
+                },
+                {
+                    "name": "content",
+                    "type": "string"
+                },
+                {
+                    "name": "cost",
+                    "type": "int32"
+                },
+                {
+                    "name": "numberLimit",
+                    "type": "int32"
+                },
+                {
+                    "name": "creater",
+                    "type": "int32"
+                },
+                {
+                    "name": "posters",
+                    "type": "string"
+                },
+                {
+                    "name": "startTime",
+                    "type": "string"
+                },
+                {
+                    "name": "endTime",
+                    "type": "string"
+                }
+            ]
+        },
+        {
+            "name": "activityRelation",
+            "Name": "ActivityRelation",
+            "column": [
+                {
+                    "name": "id",
+                    "type": "int32"
+                },
+                {
+                    "name": "joiner",
+                    "type": "string"
+                },
+                {
+                    "name": "activityId",
+                    "type": "int32"
+                }
+            ]
+        },
+        {
+            "name": "file",
+            "Name": "File",
+            "column": [
+                {
+                    "name": "id",
+                    "type": "int32"
+                },
+                {
+                    "name": "label",
+                    "type": "int32"
+                },
+                {
+                    "name": "createBy",
+                    "type": "int32"
+                },
+                {
+                    "name": "fileName",
+                    "type": "string"
+                },
+                {
+                    "name": "storageKey",
+                    "type": "string"
+                },
+                {
+                    "name": "bucket",
+                    "type": "string"
+                }
+            ]
+        },
+        {
+            "name": "user",
+            "Name": "User",
+            "column": [
+                {
+                    "name": "id",
+                    "type": "int32"
+                },
+                {
+                    "name": "wechatID",
+                    "type": "string"
+                },
+                {
+                    "name": "phone",
+                    "type": "string"
+                },
+                {
+                    "name": "email",
+                    "type": "string"
+                }
+            ]
+        },
+        {
+            "name": "userinfo",
+            "Name": "Userinfo",
+            "column": [
+                {
+                    "name": "id",
+                    "type": "int32"
+                },
+                {
+                    "name": "gender",
+                    "type": "string"
+                },
+                {
+                    "name": "name",
+                    "type": "string"
+                },
+                {
+                    "name": "idcard",
+                    "type": "string"
+                },
+                {
+                    "name": "wechatID",
+                    "type": "string"
+                },
+                {
+                    "name": "address",
+                    "type": "string"
+                },
+                {
+                    "name": "avatarUrl",
+                    "type": "string"
+                }
+            ]
+        },
+        {
+            "name": "activityFieldCustom",
+            "Name": "ActivityFieldCustom",
+            "type": "mongodb",
+            "column": [
+                {
+                    "name": "id",
+                    "type": "int32"
+                },
+                {
+                    "name": "activityId",
+                    "type": "string"
+                },
+                {
+                    "name": "customs",
+                    "type": "string"
+                }
+            ]
+        }
+    ]
+}

@@ -1,0 +1,23 @@
+import { InjectRepository } from '@nestjs/typeorm';
+import { Injectable } from '@nestjs/common';
+import { <%- column.Name %>Document } from './<%- column.name %>.schema';
+import { MongoCrudService } from '../../common/mongo.crud.service';
+import { InjectModel } from '@nestjs/mongoose';
+
+@Injectable()
+export class <%- column.Name %>CrudService extends MongoCrudService<<%- column.Name %>Document>{
+    constructor(
+        @InjectModel('<%- column.Name %>') model
+    ) {
+        super(model)
+    }
+
+    public static method = '<%- column.Name %>';
+    public static service = '<%- column.Name %>CrudService';
+
+    public static request = {};
+    public static response = {};
+
+
+}
+

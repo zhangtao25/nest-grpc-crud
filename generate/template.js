@@ -28,11 +28,11 @@ message CommonField {
 
 
         const main = `
-service ${tableName}Service {
-    rpc Create${tableName} (Create${tableName}RequestType) returns (Create${tableName}ResponseType) {}
-    rpc Delete${tableName} (Delete${tableName}RequestType) returns (Delete${tableName}ResponseType) {}
-    rpc Update${tableName} (Update${tableName}RequestType) returns (Update${tableName}ResponseType) {}
-    rpc Find${tableName} (Find${tableName}RequestType) returns (Find${tableName}ResponseType) {}
+service ${tableName}CrudService {
+    rpc Create (Create${tableName}RequestType) returns (Create${tableName}ResponseType) {}
+    rpc Delete (Delete${tableName}RequestType) returns (Delete${tableName}ResponseType) {}
+    rpc Update (Update${tableName}RequestType) returns (Update${tableName}ResponseType) {}
+    rpc Find (Find${tableName}RequestType) returns (Find${tableName}ResponseType) {}
 }
 
 //${tableName}

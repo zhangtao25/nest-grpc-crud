@@ -1,16 +1,14 @@
 import { Module } from '@nestjs/common';
 import { AppController } from './app.controller';
 import { TypeOrmModule } from '@nestjs/typeorm';
-import { Activity } from './apps/activity/activity.entity';
-import { ActivityCrudService } from './apps/activity/activity.crud.service';
+import { MongooseModule } from '@nestjs/mongoose';
+import { ActivityFieldCustomSchema } from './apps/activityFieldCustom/activityFieldCustom.schema';
 import { User } from './apps/user/user.entity';
 import { UserCrudService } from './apps/user/user.crud.service';
-import { Student } from './apps/student/student.entity';
-import { StudentCrudService } from './apps/student/student.crud.service';
-import { Book } from './apps/book/book.entity';
-import { BookCrudService } from './apps/book/book.crud.service';
-import { School } from './apps/school/school.entity';
-import { SchoolCrudService } from './apps/school/school.crud.service';
+import { ActivityFieldCustomCrudService } from './apps/activityFieldCustom/activityFieldCustom.crud.service';
+import { ClentServe } from './grpc/grpc.client.server';
+
+
 
 @Module({
   imports: [
@@ -22,14 +20,26 @@ import { SchoolCrudService } from './apps/school/school.crud.service';
           username: 'root',
           password: 'wjyy26303',
           database: 'nest-grpc-crud-test',
-          entities:[Activity,User,Student,Book,School],
+          entities:[User],
           autoLoadEntities: true,
           synchronize: true,
           // entities: [User,Userinfo,File]
       }),
-      TypeOrmModule.forFeature([Activity,User,Student,Book,School], 'regConnection')
+      TypeOrmModule.forFeature([User], 'regConnection'),
+      MongooseModule.forRoot('mongodb://test:123456@114.55.145.3/registration',{
+          connectionName:'registrationMongoConnection'
+      }),
+      MongooseModule.forFeature([{
+          name: 'activity_field_custom',
+          schema: ActivityFieldCustomSchema,
+          collection: 'activity_field_custom',
+      }], 'registrationMongoConnection'),
   ],
   controllers: [AppController],
-  providers: [ActivityCrudService,UserCrudService,StudentCrudService,BookCrudService,SchoolCrudService],
+  providers: [
+      ClentServe,
+      UserCrudService,
+      ActivityFieldCustomCrudService
+  ],
 })
 export class AppModule {}

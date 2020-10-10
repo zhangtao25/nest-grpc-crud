@@ -8,18 +8,18 @@ message CommonField {
     string pageSize = 2;
 }
 
-service UserService {
-    rpc CreateUser (CreateUserRequestType) returns (CreateUserResponseType) {}
-    rpc DeleteUser (DeleteUserRequestType) returns (DeleteUserResponseType) {}
-    rpc UpdateUser (UpdateUserRequestType) returns (UpdateUserResponseType) {}
-    rpc FindUser (FindUserRequestType) returns (FindUserResponseType) {}
+service UserCrudService {
+    rpc Create (CreateUserRequestType) returns (CreateUserResponseType) {}
+    rpc Delete (DeleteUserRequestType) returns (DeleteUserResponseType) {}
+    rpc Update (UpdateUserRequestType) returns (UpdateUserResponseType) {}
+    rpc Find (FindUserRequestType) returns (FindUserResponseType) {}
 }
 
 //User
 message User {
 
     int32 id = 1;
-    string unionid = 2;
+    string wechatID = 2;
     string phone = 3;
     string email = 4;
 }
@@ -27,7 +27,7 @@ message User {
 message CreateUserRequestType{
 
     int32 id = 1;
-    string unionid = 2;
+    string wechatID = 2;
     string phone = 3;
     string email = 4;
 }
@@ -49,7 +49,7 @@ message DeleteUserResponseType{
 message UpdateUserRequestType{
 
     int32 id = 1;
-    string unionid = 2;
+    string wechatID = 2;
     string phone = 3;
     string email = 4;
 }
@@ -70,247 +70,61 @@ message FindUserResponseType{
     string responseDesc =  3;
 }
 
-service ActivityService {
-    rpc CreateActivity (CreateActivityRequestType) returns (CreateActivityResponseType) {}
-    rpc DeleteActivity (DeleteActivityRequestType) returns (DeleteActivityResponseType) {}
-    rpc UpdateActivity (UpdateActivityRequestType) returns (UpdateActivityResponseType) {}
-    rpc FindActivity (FindActivityRequestType) returns (FindActivityResponseType) {}
+service ActivityFieldCustomCrudService {
+    rpc Create (CreateActivityFieldCustomRequestType) returns (CreateActivityFieldCustomResponseType) {}
+    rpc Delete (DeleteActivityFieldCustomRequestType) returns (DeleteActivityFieldCustomResponseType) {}
+    rpc Update (UpdateActivityFieldCustomRequestType) returns (UpdateActivityFieldCustomResponseType) {}
+    rpc Find (FindActivityFieldCustomRequestType) returns (FindActivityFieldCustomResponseType) {}
 }
 
-//Activity
-message Activity {
+//ActivityFieldCustom
+message ActivityFieldCustom {
 
     int32 id = 1;
-    string name = 2;
-    int32 cost = 3;
-    int32 numberLimit = 4;
-    int32 creater = 5;
-    int32 posters = 6;
-    string startTime = 7;
-    string endTime = 8;
-    string content = 9;
+    string activityId = 2;
+    string customs = 3;
 }
 
-message CreateActivityRequestType{
+message CreateActivityFieldCustomRequestType{
 
     int32 id = 1;
-    string name = 2;
-    int32 cost = 3;
-    int32 numberLimit = 4;
-    int32 creater = 5;
-    int32 posters = 6;
-    string startTime = 7;
-    string endTime = 8;
-    string content = 9;
+    string activityId = 2;
+    string customs = 3;
 }
 
-message CreateActivityResponseType{
+message CreateActivityFieldCustomResponseType{
     int32 responseCode = 2;
     string responseDesc =  3;
 }
 
-message DeleteActivityRequestType{
+message DeleteActivityFieldCustomRequestType{
     string id = 1;
 }
 
-message DeleteActivityResponseType{
+message DeleteActivityFieldCustomResponseType{
     int32 responseCode = 2;
     string responseDesc =  3;
 }
 
-message UpdateActivityRequestType{
+message UpdateActivityFieldCustomRequestType{
 
     int32 id = 1;
-    string name = 2;
-    int32 cost = 3;
-    int32 numberLimit = 4;
-    int32 creater = 5;
-    int32 posters = 6;
-    string startTime = 7;
-    string endTime = 8;
-    string content = 9;
+    string activityId = 2;
+    string customs = 3;
 }
 
-message UpdateActivityResponseType{
+message UpdateActivityFieldCustomResponseType{
     int32 responseCode = 2;
     string responseDesc =  3;
 }
 
-message FindActivityRequestType{
-    Activity entity = 1;
+message FindActivityFieldCustomRequestType{
+    ActivityFieldCustom entity = 1;
     CommonField commonField = 2;
 }
 
-message FindActivityResponseType{
-    repeated Activity data = 1;
-    int32 responseCode = 2;
-    string responseDesc =  3;
-}
-
-service StudentService {
-    rpc CreateStudent (CreateStudentRequestType) returns (CreateStudentResponseType) {}
-    rpc DeleteStudent (DeleteStudentRequestType) returns (DeleteStudentResponseType) {}
-    rpc UpdateStudent (UpdateStudentRequestType) returns (UpdateStudentResponseType) {}
-    rpc FindStudent (FindStudentRequestType) returns (FindStudentResponseType) {}
-}
-
-//Student
-message Student {
-
-    int32 id = 1;
-    string name = 2;
-}
-
-message CreateStudentRequestType{
-
-    int32 id = 1;
-    string name = 2;
-}
-
-message CreateStudentResponseType{
-    int32 responseCode = 2;
-    string responseDesc =  3;
-}
-
-message DeleteStudentRequestType{
-    string id = 1;
-}
-
-message DeleteStudentResponseType{
-    int32 responseCode = 2;
-    string responseDesc =  3;
-}
-
-message UpdateStudentRequestType{
-
-    int32 id = 1;
-    string name = 2;
-}
-
-message UpdateStudentResponseType{
-    int32 responseCode = 2;
-    string responseDesc =  3;
-}
-
-message FindStudentRequestType{
-    Student entity = 1;
-    CommonField commonField = 2;
-}
-
-message FindStudentResponseType{
-    repeated Student data = 1;
-    int32 responseCode = 2;
-    string responseDesc =  3;
-}
-
-service BookService {
-    rpc CreateBook (CreateBookRequestType) returns (CreateBookResponseType) {}
-    rpc DeleteBook (DeleteBookRequestType) returns (DeleteBookResponseType) {}
-    rpc UpdateBook (UpdateBookRequestType) returns (UpdateBookResponseType) {}
-    rpc FindBook (FindBookRequestType) returns (FindBookResponseType) {}
-}
-
-//Book
-message Book {
-
-    int32 id = 1;
-    string category = 2;
-}
-
-message CreateBookRequestType{
-
-    int32 id = 1;
-    string category = 2;
-}
-
-message CreateBookResponseType{
-    int32 responseCode = 2;
-    string responseDesc =  3;
-}
-
-message DeleteBookRequestType{
-    string id = 1;
-}
-
-message DeleteBookResponseType{
-    int32 responseCode = 2;
-    string responseDesc =  3;
-}
-
-message UpdateBookRequestType{
-
-    int32 id = 1;
-    string category = 2;
-}
-
-message UpdateBookResponseType{
-    int32 responseCode = 2;
-    string responseDesc =  3;
-}
-
-message FindBookRequestType{
-    Book entity = 1;
-    CommonField commonField = 2;
-}
-
-message FindBookResponseType{
-    repeated Book data = 1;
-    int32 responseCode = 2;
-    string responseDesc =  3;
-}
-
-service SchoolService {
-    rpc CreateSchool (CreateSchoolRequestType) returns (CreateSchoolResponseType) {}
-    rpc DeleteSchool (DeleteSchoolRequestType) returns (DeleteSchoolResponseType) {}
-    rpc UpdateSchool (UpdateSchoolRequestType) returns (UpdateSchoolResponseType) {}
-    rpc FindSchool (FindSchoolRequestType) returns (FindSchoolResponseType) {}
-}
-
-//School
-message School {
-
-    int32 id = 1;
-    string address = 2;
-}
-
-message CreateSchoolRequestType{
-
-    int32 id = 1;
-    string address = 2;
-}
-
-message CreateSchoolResponseType{
-    int32 responseCode = 2;
-    string responseDesc =  3;
-}
-
-message DeleteSchoolRequestType{
-    string id = 1;
-}
-
-message DeleteSchoolResponseType{
-    int32 responseCode = 2;
-    string responseDesc =  3;
-}
-
-message UpdateSchoolRequestType{
-
-    int32 id = 1;
-    string address = 2;
-}
-
-message UpdateSchoolResponseType{
-    int32 responseCode = 2;
-    string responseDesc =  3;
-}
-
-message FindSchoolRequestType{
-    School entity = 1;
-    CommonField commonField = 2;
-}
-
-message FindSchoolResponseType{
-    repeated School data = 1;
+message FindActivityFieldCustomResponseType{
+    repeated ActivityFieldCustom data = 1;
     int32 responseCode = 2;
     string responseDesc =  3;
 }

@@ -12,7 +12,7 @@ export class UserCrudService extends CrudService<User>{
     }
 
     public static method = 'User';
-    public static service = 'UserService';
+    public static service = 'UserCrudService';
 
     public static request = {};
     public static response = {};
