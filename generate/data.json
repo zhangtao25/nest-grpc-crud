@@ -153,7 +153,7 @@
             "column": [
                 {
                     "name": "id",
-                    "type": "int32"
+                    "type": "string"
                 },
                 {
                     "name": "activityId",
@@ -172,7 +172,7 @@
             "column": [
                 {
                     "name": "id",
-                    "type": "int32"
+                    "type": "string"
                 },
                 {
                     "name": "activityrelationId",
